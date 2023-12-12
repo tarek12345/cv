@@ -3,7 +3,10 @@ import "./Profession.css"
 export default function Profession() {
   return (
 
-    <div className="expirence">
+    <div className="expirence  ">
+      <div className="titles profession ">
+        <h2>L'expérience professionnelle</h2>
+      </div>
      <div className="row ">
      <div className="col-md-6 first">
       <div className="content__expirence">

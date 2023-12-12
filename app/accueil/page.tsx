@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./page.css";
 import "lightbox.js-react/dist/index.css";
-import { SlideshowLightbox, initLightbox } from "lightbox.js-react";
+import { SlideshowLightbox } from "lightbox.js-react";
 
 import Profession from "./Profession/Profession";
+import Education from "./Education/Education";
 export default function pageHome() {
   interface ProgressBarProps {
     // Other props...
@@ -124,11 +125,8 @@ export default function pageHome() {
           </div>
         </div>
         <div className=" autre">
-      <div className="notice">
-        Passionnée par les nouvelles Technologies<br></br> j’aime écouter,
-        Étudier et comprendre pour agir, <br></br>construire et concevoir.”
-      </div>
-      <div className="titles">
+     
+      <div className="titles profession ">
         <h2>Compétences professionnelles</h2>
       </div>
       <div className="competence">
@@ -160,12 +158,12 @@ export default function pageHome() {
             ))}
         </div>
       </div>
-      <div className="container">
-      <div className="titles">
+      <div className="container  ">
+      <div className="titles profession  ">
         <h2>Nos Réalisations</h2>
       </div>
         <SlideshowLightbox
-          className="grid grid-cols-2 md:grid-cols-4 gap-4"
+          className="grid grid-cols-2 profession md:grid-cols-4 gap-4"
           showThumbnails={true}
         >
       
@@ -179,11 +177,13 @@ export default function pageHome() {
         </SlideshowLightbox>
       </div>
       <div className="container">
-      <div className="titles">
-        <h2>L'expérience professionnelle</h2>
+      
+        <div className="profession" ><Profession /></div>
       </div>
-        <Profession />
-      </div>
+      <div className="container">
+      
+      <div className="profession" ><Education /></div>
+    </div>
     </div>
     </div>
   );
