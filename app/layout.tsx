@@ -4,6 +4,7 @@ import './globals.css'
 import TopBar from '@/components/TopBar/TopBar'
 import 'bootstrap/dist/css/bootstrap.css'
 import '@fortawesome/fontawesome-free/css/all.css';
+import Footer from '@/components/Footer/Footer'
 const roboto = Roboto({
   weight: ['400', '700'],
   style: ['normal', 'italic'],
@@ -23,7 +24,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr">
-      <body className={roboto.className}><TopBar />{children}</body>
+      <body className={roboto.className}><TopBar /> {children}   <Footer />
+      <script src="https://cdn.sendgrid.com/pgp-button/main-4.11.0/pgp-button.js"></script>
+
+      </body>
     </html>
   )
 }

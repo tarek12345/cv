@@ -3,7 +3,7 @@ import "./Education.css"
 export default function Education() {
   return (
 
-    <div className="expirence  profession ">
+    <div className="expirence  mb-3 ">
       <div className="titles profession ">
         <h2>Éducation</h2>
       </div>
