@@ -1,7 +1,6 @@
 "use client";
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Navigation from "./Navigation/Navigation";
-import Image from "next/image";
 import "./TopBar.css";
 
 export default function TopBar() {

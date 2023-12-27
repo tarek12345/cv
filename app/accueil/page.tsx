@@ -7,10 +7,7 @@ import { SlideshowLightbox } from "lightbox.js-react";
 import Profession from "./Profession/Profession";
 import Education from "./Education/Education";
 export default function pageHome() {
-  interface ProgressBarProps {
-    // Other props...
-    "aria-valuemax": number | string; // Accepts both number and string
-  }
+
   const [Competence, setCompetence] = useState([
     { name: "NODE JS", num: 70 },
     { name: "ANGULAR JS", num: 99 },
