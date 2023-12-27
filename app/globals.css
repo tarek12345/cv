@@ -1,9 +1,0 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-
-.homepage {
-    background-color: #efefef;
-    font-family: 'Roboto', sans-serif;
-}
