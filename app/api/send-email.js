@@ -6,20 +6,28 @@ export default async function handler(req, res) {
         return res.status(405).end(); // Method Not Allowed
     }
 
-    const { to, subject, body } = req.body;
+    const { recipient, subject, message } = req.body;
 
     try {
+        // Retrieve the email API URL and credentials from environment variables
+        const emailApiUrl = process.env.NEXT_PUBLIC_EMAIL_API;
+        const emailUser = process.env.EMAIL_USER;
+        const emailPass = process.env.EMAIL_PASS;
+
         // Your email sending logic using nodemailer
         const transporter = nodemailer.createTransport({
-            // Your email configuration goes here
-            // ...
+            service: 'gmail',
+            auth: {
+                user: emailUser,
+                pass: emailPass,
+            },
         });
 
         await transporter.sendMail({
-            from: 'your_email@gmail.com',
-            to: to,
+            from: emailUser,
+            to: recipient,
             subject: subject,
-            text: body,
+            text: message,
         });
 
         res.status(200).json({ message: 'Email sent successfully' });

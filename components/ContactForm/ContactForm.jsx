@@ -1,79 +1,88 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { config } from "dotenv";
-import "./ContactForm.css"
-config();
+import "./ContactForm.css";
 const ContactForm = () => {
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [chekeds, setChekeds] = useState(false);
-  const sendEmail = async () => {
-    try {
-        const response = await fetch('/api/send-email', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                to: email,
-                subject: message,
-             
-            }),
-        });
+  const [formData, setFormData] = useState({
+    email: '', // Use 'email' instead of 'recipient'
+    message: '',
+    checked: false, // Use a boolean to track checkbox state
+  });
+  const emailApi = process.env.NEXT_PUBLIC_EMAIL_API;
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  }; 
+   const rest = () => {
+    setFormData('');
+  };
 
-        if (response.ok) {
-            console.log('Email sent successfully!');
-        } else {
-            console.error('Failed to send email:', response.statusText);
-        }
+  const handleCheckboxChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.checked });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      // Make a POST request to your API route
+      const response = await axios.post(
+        emailApi,
+        formData
+      );
+
+      // Handle success
+      console.log(response.data);
     } catch (error) {
-        console.error('Error sending email:', error.message);
+      // Handle error
+      console.error('Error sending email:', error);
     }
-  }
+  };
+
   return (
-    <form>
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="inputGroupPrepend2">
+    <form >
+      <div className="input-group mb-3">
+        <span className="input-group-text" id="inputGroupPrepend2">
           @
         </span>
         <input
           type="text"
-          class="form-control"
+          className="form-control"
           id="validationDefaultUsername"
           name="email"
           required
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
+          onChange={handleChange}
+          defaultValue={formData.email}
           placeholder="E-mail"
           aria-describedby="inputGroupPrepend2"
         />
       </div>
       <textarea
         type="text"
-        class="form-control mb-3"
+        className="form-control mb-3"
         id="validationDefault03"
         name="message"
-        value={message}
+        defaultValue={formData.message}
         placeholder="Message"
-        onChange={(e) => setMessage(e.target.value)}
+        onChange={handleChange}
       ></textarea>
-      <div class="form-check">
+      <div className="form-check">
         <input
-          class="form-check-input"
+          className="form-check-input"
           type="checkbox"
           id="invalidCheck2"
-          onChange={(e) => setChekeds(e.target.value)}
-          value={chekeds}
+          name="checked"
+          onChange={handleCheckboxChange}
+          defaultValue={formData.checked}
+          checked={formData.checked}
         />
-        <label class="form-check-label mb-3" for="invalidCheck2">
+        <label className="form-check-label mb-3" htmlFor="invalidCheck2">
           Accepter les termes et conditions
         </label>
       </div>
-      <div class="col-12 btns">
-        <button class="btn btn-primary me-2" type="submit" onClick={sendEmail}>
+      <div className="col-12 btns">
+        <button className="btn btn-primary me-2" type="submit" onClick={handleSubmit}>
           Envoyer
         </button>
-        <button class="btn btn-danger" type="submit">
+        <button className="btn btn-danger" type="reset" onClick={rest}>
           Annuler
         </button>
       </div>

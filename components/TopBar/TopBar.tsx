@@ -5,11 +5,11 @@ import Image from "next/image";
 import "./TopBar.css";
 
 export default function TopBar() {
-  const [countClick, setCountClick] = useState([
+  const countClick =[
     { name: "React js", num: 99 },
     { name: "Next js", num: 90 },
     { name: "Angular js", num: 80 },
-  ]);
+  ]
   const [isSticky, setSticky] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
@@ -50,7 +50,7 @@ export default function TopBar() {
                   type="range"
                   min="0"
                   max="100%"
-                  value={count.num}
+                  defaultValue={count.num}
                   id="slider"
                 />
               </div>

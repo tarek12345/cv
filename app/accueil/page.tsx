@@ -1,3 +1,4 @@
+ "use client";
 import React, { useState, useEffect } from "react";
 import "./page.css";
 import "lightbox.js-react/dist/index.css";
@@ -164,32 +165,32 @@ export default function pageHome() {
           >
             <img
               className="w-full rounded"
-              src="/assets/athbbord.PNG"
+              src="/assets/athbbord.png"
               alt="athbbord"
             />
             <img
               className="w-full rounded"
-              src="/assets/bboard.PNG"
+              src="/assets/bboard.png"
               alt="bboard"
             />
             <img
               className="w-full rounded"
-              src="/assets/authwalopst.PNG"
+              src="/assets/authwalopst.png"
               alt="authwalopst"
             />
             <img
               className="w-full rounded"
-              src="/assets/wallpost.PNG"
+              src="/assets/wallpost.png"
               alt="wallpost"
             />
             <img
               className="w-full rounded"
-              src="/assets/yellow.PNG"
+              src="/assets/yellow.png"
               alt="yellow"
             />
             <img
               className="w-full rounded"
-              src="/assets/siteyellow.PNG"
+              src="/assets/siteyellow.png"
               alt="siteyellow"
             />
           </SlideshowLightbox>
